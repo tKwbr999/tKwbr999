@@ -1,56 +1,56 @@
-name: Deploy to GitHub Pages
+# 静的コンテンツを GitHub Pages にデプロイするためのシンプルなワークフロー
+name: Deploy static content to Pages
 
 on:
-  # mainブランチにプッシュした時に実行
+  # デフォルトブランチを対象としたプッシュ時にで実行されます
   push:
-    branches: [main]
-  # 手動で実行できるようにする
+    branches: ["main"]
+
+  # Actions タブから手動でワークフローを実行できるようにします
   workflow_dispatch:
 
-# 同時に1つのデプロイのみを許可する
+# GITHUB_TOKEN のパーミッションを設定し、GitHub Pages へのデプロイを許可します
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 1 つの同時デプロイメントを可能にする
 concurrency:
-  group: pages
+  group: "pages"
   cancel-in-progress: true
 
-env:
-  # bunを使用する
-  FORCE_COLOR: true
-
 jobs:
-  build:
-    name: Build
+  # デプロイするだけなので、単一のデプロイジョブ
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
-
+          node-version: 20
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        # with:
+        #   bun-version: latest # オプション: 特定のバージョンを指定する場合
       - name: Install dependencies
         run: bun install
-
-      - name: Build with Astro
+      - name: Build
         run: bun run build
-
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v4
+        env:
+          VITE_SITE_DOMAIN: ${{ secrets.VITE_SITE_DOMAIN }}
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
+          # dist フォルダーのアップロード
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
