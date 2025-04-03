@@ -1,9 +1,9 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://tkwbr999.github.io',
+  site: "https://tKwbr999.github.io",
 });
