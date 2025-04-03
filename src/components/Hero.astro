@@ -1,0 +1,120 @@
+---
+import { Image } from 'astro:assets';
+import profileImage from '../assets/profile.png';
+---
+
+<section id="hero" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-20 left-10 w-40 h-40 bg-primary/20 rounded-full filter blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-60 h-60 bg-secondary/20 rounded-full filter blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent/10 rounded-full filter blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-6 py-12 flex flex-col lg:flex-row items-center gap-12">
+    <div class="lg:w-1/2 flex flex-col items-start space-y-8 reveal">
+      <div class="flex items-center space-x-3">
+        <div class="h-1 w-12 bg-primary"></div>
+        <span class="text-primary font-medium">ポートフォリオ</span>
+      </div>
+      
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight hero-text">
+        <span class="block">AI <span class="text-primary">"も"</span> 使える</span>
+        <span class="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">エンジニア</span>
+      </h1>
+      
+      <p class="text-lg text-gray-700 max-w-xl">
+        SIerからWebエンジニアとしてスタートし、メディア事業やインターネット広告の分野で経験を積みました。各種お仕事承ります。お気軽にDMください。
+      </p>
+      
+      <div class="flex flex-wrap gap-4">
+        <a href="#contact" class="btn-primary">
+          連絡先
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="#projects" class="btn-secondary">
+          プロジェクト
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-4 pt-4">
+        <a href="https://zenn.dev/tkwbr999" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg class="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M.264 23.771h4.984c.264 0 .498-.147.645-.352L19.614.874c.176-.293-.029-.645-.381-.645h-4.72c-.235 0-.44.117-.557.323L.03 23.361c-.117.264.029.41.234.41zM17.445 23.419l6.479-10.408c.205-.323-.029-.733-.41-.733h-4.691c-.176 0-.352.088-.44.235l-6.244 10.174c-.176.264.029.732.381.732h4.691c.117 0 .234-.29.234-.029z"/>
+          </svg>
+        </a>
+        <a href="https://x.com/tkwbr999" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg class="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/tKwbr999" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg class="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="https://wantedly.com/id/tkwbr999" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg class="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.53 14.955L9.854 9.71h2.275l1.335 2.942 1.336-2.942h2.274l-4.675 9.16h-2.274l2.41-3.916zM6.688 3.884l1.336 2.942H5.748l-1.335-2.942H2.138L0 9.711h2.274L3.61 6.769h2.274L4.548 9.71h2.275l2.139-5.827H6.688z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <div class="lg:w-1/2 flex justify-center float">
+      <div class="relative">
+        <div class="absolute inset-0 border-2 border-primary rounded-full blur-md animate-pulse"></div>
+        <div class="relative z-10 rounded-full overflow-hidden border-4 border-white shadow-xl w-64 h-64">
+          <Image 
+            src={profileImage} 
+            alt="プロフィール写真" 
+            width={512} 
+            height={512} 
+            class="w-full h-full object-cover rounded-full"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <a href="#about" class="text-dark/50 hover:text-primary transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .btn-primary {
+    @apply flex items-center bg-primary hover:bg-primary/90 text-white py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply flex items-center bg-white hover:bg-gray-50 text-dark border border-gray-300 py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg;
+  }
+  
+  .social-link {
+    @apply text-gray-600 hover:text-primary transition-colors duration-300;
+  }
+  
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+  }
+  
+  .reveal.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

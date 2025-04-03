@@ -1,0 +1,63 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-12 bg-dark text-white">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div>
+        <h2 class="text-2xl font-bold text-gradient bg-gradient-to-r from-primary to-accent">tkwbr999</h2>
+        <p class="text-gray-400 mt-2">AI "も" 使えるエンジニア</p>
+      </div>
+      
+      <div class="mt-8 md:mt-0">
+        <div class="flex space-x-6">
+          <a href="https://zenn.dev/tkwbr999" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg class="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M.264 23.771h4.984c.264 0 .498-.147.645-.352L19.614.874c.176-.293-.029-.645-.381-.645h-4.72c-.235 0-.44.117-.557.323L.03 23.361c-.117.264.029.41.234.41zM17.445 23.419l6.479-10.408c.205-.323-.029-.733-.41-.733h-4.691c-.176 0-.352.088-.44.235l-6.244 10.174c-.176.264.029.732.381.732h4.691c.117 0 .234-.29.234-.029z"/>
+            </svg>
+          </a>
+          <a href="https://x.com/tkwbr999" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg class="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+            </svg>
+          </a>
+          <a href="https://github.com/tKwbr999" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg class="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://wantedly.com/id/tkwbr999" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg class="h-6 w-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12.53 14.955L9.854 9.71h2.275l1.335 2.942 1.336-2.942h2.274l-4.675 9.16h-2.274l2.41-3.916zM6.688 3.884l1.336 2.942H5.748l-1.335-2.942H2.138L0 9.711h2.274L3.61 6.769h2.274L4.548 9.71h2.275l2.139-5.827H6.688z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 text-sm">© {currentYear} tkwbr999. All rights reserved.</p>
+      
+      <div class="mt-4 md:mt-0">
+        <a href="#hero" class="text-gray-400 hover:text-primary transition-colors duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .social-link {
+    @apply text-gray-400 hover:text-primary transition-colors duration-300;
+  }
+</style>

@@ -1,0 +1,129 @@
+---
+const projects = [
+  {
+    title: "共通認証基盤開発",
+    description: "企業向けの認証基盤システムを開発。統合的なIDとアクセス管理を提供し、セキュリティと利便性を両立させたシステム。",
+    skills: ["TypeScript", "Node.js", "React", "PostgreSQL", "Docker"],
+    category: "企業案件"
+  },
+  {
+    title: "建築設計データ解析/API開発",
+    description: "建築設計データを解析し、APIを通じて必要な情報を取得できるシステムを開発。データ解析アルゴリズムを実装。",
+    skills: ["Python", "Go", "Docker", "GCP", "BigQuery"],
+    category: "企業案件"
+  },
+  {
+    title: "特定年齢層向けSNS・メディアアプリ",
+    description: "特定の年齢層をターゲットにしたSNSとメディア機能を統合したアプリ開発。リアルタイムコミュニケーション機能を実装。",
+    skills: ["React Native", "TypeScript", "Firebase", "Node.js"],
+    category: "企業案件"
+  },
+  {
+    title: "個人向けタスク管理アプリ",
+    description: "AIを活用したパーソナライズされたタスク管理システム。ユーザーの行動パターンから最適なタスク配分を提案。",
+    skills: ["Next.js", "TypeScript", "Supabase", "OpenAI API"],
+    category: "個人開発"
+  },
+  {
+    title: "AIプロンプト管理ツール",
+    description: "各種AI向けのプロンプトを管理・整理し、効率的に再利用できるツール。チーム間でのプロンプト共有機能も実装。",
+    skills: ["React", "TypeScript", "Firebase", "Claude API"],
+    category: "個人開発"
+  },
+  {
+    title: "開発者向けCLIツール",
+    description: "開発ワークフローを効率化するためのコマンドラインツール。コード生成やAPI呼び出しを自動化。",
+    skills: ["Go", "TypeScript", "Node.js"],
+    category: "個人開発"
+  }
+];
+
+const getCategoryColor = (category) => {
+  return category === "企業案件" ? "bg-primary" : "bg-secondary";
+};
+---
+
+<section id="projects" class="py-24 bg-white relative">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">プロジェクト</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        企業案件と個人開発、両方の観点から取り組んできたプロジェクトの一部をご紹介します。
+      </p>
+      <div class="h-1 w-20 bg-primary mx-auto mt-6"></div>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 h-full flex flex-col reveal">
+          <div class={`${getCategoryColor(project.category)} text-white py-1 px-4 text-sm font-medium`}>
+            {project.category}
+          </div>
+          <div class="p-6 flex-grow">
+            <h3 class="text-xl font-bold mb-3">{project.title}</h3>
+            <p class="text-gray-600 mb-4">{project.description}</p>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              {project.skills.map((skill) => (
+                <span class="bg-gray-100 text-gray-700 rounded-full text-xs px-3 py-1">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <a 
+        href="https://github.com/tKwbr999" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-flex items-center bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+      >
+        <svg class="h-5 w-5 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        GitHubでその他のプロジェクトを見る
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to));
+    --tw-gradient-from: #4A66E3;
+    --tw-gradient-to: #7E57C2;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+  }
+  
+  .project-card:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+  }
+  
+  .reveal.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
