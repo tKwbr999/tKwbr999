@@ -1,20 +1,20 @@
-import { useRef } from 'react';
-import styled from 'styled-components';
-import { motion, useInView } from 'framer-motion';
-import { profileInfo, newsItems } from '../../data/profileData';
-import { FaGithub } from 'react-icons/fa';
-import { SiZenn, SiWantedly } from 'react-icons/si';
+import { useRef } from "react";
+import styled from "styled-components";
+import { motion, useInView } from "framer-motion";
+import { profileInfo, newsItems } from "../../data/profileData";
+import { FaGithub } from "react-icons/fa";
+import { SiZenn, SiWantedly } from "react-icons/si";
 
 const AboutSection = styled.section`
   min-height: 100vh;
   padding: var(--section-padding);
   padding-left: calc(var(--header-width) + 60px);
   background-color: var(--bg-color-light);
-  
+
   @media (max-width: 1279px) and (min-width: 768px) {
     padding-left: calc(var(--header-width-tablet) + 40px);
   }
-  
+
   @media (max-width: 767px) {
     padding-left: 20px;
     padding-top: 100px;
@@ -25,9 +25,9 @@ const SectionTitle = styled(motion.h2)`
   font-size: 2.5rem;
   margin-bottom: 60px;
   position: relative;
-  
+
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: -15px;
@@ -35,7 +35,7 @@ const SectionTitle = styled(motion.h2)`
     height: 3px;
     background-color: var(--accent-color);
   }
-  
+
   @media (max-width: 767px) {
     font-size: 2rem;
     margin-bottom: 40px;
@@ -46,7 +46,7 @@ const AboutContent = styled.div`
   display: grid;
   grid-template-columns: 65% 30%;
   gap: 5%;
-  
+
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -57,7 +57,7 @@ const MainContent = styled.div``;
 
 const Subsection = styled(motion.div)`
   margin-bottom: 60px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -68,9 +68,9 @@ const SubsectionTitle = styled.h3`
   margin-bottom: 30px;
   position: relative;
   display: inline-block;
-  
+
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: -8px;
@@ -103,9 +103,9 @@ const SkillItem = styled.li`
 
 const ExperienceList = styled.div`
   position: relative;
-  
+
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 10px;
     top: 0;
@@ -119,13 +119,13 @@ const ExperienceItem = styled.div`
   position: relative;
   padding-left: 40px;
   margin-bottom: 40px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 10px;
@@ -158,26 +158,6 @@ const ExperienceDescription = styled.p`
   font-size: 0.95rem;
 `;
 
-const AwardsList = styled.ul`
-  list-style: none;
-`;
-
-const AwardItem = styled.li`
-  position: relative;
-  padding-left: 20px;
-  margin-bottom: 15px;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 10px;
-    height: 2px;
-    background-color: var(--accent-color);
-  }
-`;
-
 const Sidebar = styled.div``;
 
 const NewsList = styled.div``;
@@ -186,7 +166,7 @@ const NewsItem = styled(motion.div)`
   margin-bottom: 30px;
   padding-bottom: 30px;
   border-bottom: 1px solid #444;
-  
+
   &:last-child {
     border-bottom: none;
   }
@@ -239,7 +219,7 @@ const QRCodeTitle = styled.h5`
   margin-bottom: 5px;
   display: flex;
   align-items: center;
-  
+
   svg {
     margin-right: 8px;
   }
@@ -253,7 +233,7 @@ const QRCodeDescription = styled.p`
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
-  
+
   return (
     <AboutSection id="about" ref={ref}>
       <SectionTitle
@@ -263,7 +243,7 @@ const About = () => {
       >
         ABOUT
       </SectionTitle>
-      
+
       <AboutContent>
         <MainContent>
           <Subsection
@@ -276,7 +256,7 @@ const About = () => {
               「AI"も"使えるエンジニア」として、フルスタックエンジニア桑原崇のポートフォリオサイトです。バックエンド開発を中心としたスキルと経験、個人制作物、技術記事を紹介しています。
             </Bio>
           </Subsection>
-          
+
           <Subsection
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -284,25 +264,27 @@ const About = () => {
           >
             <SubsectionTitle>プロフィール</SubsectionTitle>
             <Bio>{profileInfo.bio}</Bio>
-            
+
             <SkillsList>
               {profileInfo.skills.map((skill, index) => (
                 <SkillItem key={index}>{skill}</SkillItem>
               ))}
             </SkillsList>
-            
+
             <ExperienceList>
               {profileInfo.experience.map((exp, index) => (
                 <ExperienceItem key={index}>
                   <ExperienceCompany>{exp.company}</ExperienceCompany>
                   <ExperienceRole>{exp.role}</ExperienceRole>
                   <ExperiencePeriod>{exp.period}</ExperiencePeriod>
-                  <ExperienceDescription>{exp.description}</ExperienceDescription>
+                  <ExperienceDescription>
+                    {exp.description}
+                  </ExperienceDescription>
                 </ExperienceItem>
               ))}
             </ExperienceList>
           </Subsection>
-          
+
           <Subsection
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -320,7 +302,7 @@ const About = () => {
             </Bio>
           </Subsection>
         </MainContent>
-        
+
         <Sidebar>
           <Subsection
             initial={{ opacity: 0, y: 30 }}
@@ -330,10 +312,12 @@ const About = () => {
             <SubsectionTitle>お知らせ</SubsectionTitle>
             <NewsList>
               {newsItems.map((news, index) => (
-                <NewsItem 
+                <NewsItem
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                  }
                   transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
                 >
                   <NewsDate>{news.date}</NewsDate>
@@ -343,7 +327,7 @@ const About = () => {
               ))}
             </NewsList>
           </Subsection>
-          
+
           <Subsection
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -354,24 +338,36 @@ const About = () => {
               <QRCodeContainer>
                 <QRCode src="/wantedly-qr.png" alt="Wantedlyプロフィール" />
                 <QRCodeInfo>
-                  <QRCodeTitle><SiWantedly /> Wantedly</QRCodeTitle>
-                  <QRCodeDescription>職務経歴や実績の詳細はこちら</QRCodeDescription>
+                  <QRCodeTitle>
+                    <SiWantedly /> Wantedly
+                  </QRCodeTitle>
+                  <QRCodeDescription>
+                    職務経歴や実績の詳細はこちら
+                  </QRCodeDescription>
                 </QRCodeInfo>
               </QRCodeContainer>
-              
+
               <QRCodeContainer>
                 <QRCode src="/x-qr.png" alt="X (Twitter)プロフィール" />
                 <QRCodeInfo>
-                  <QRCodeTitle><FaGithub /> X (Twitter)</QRCodeTitle>
-                  <QRCodeDescription>最新の活動や業界情報を発信</QRCodeDescription>
+                  <QRCodeTitle>
+                    <FaGithub /> X (Twitter)
+                  </QRCodeTitle>
+                  <QRCodeDescription>
+                    最新の活動や業界情報を発信
+                  </QRCodeDescription>
                 </QRCodeInfo>
               </QRCodeContainer>
-              
+
               <QRCodeContainer>
                 <QRCode src="/zenn-qr.png" alt="Zenn技術ブログ" />
                 <QRCodeInfo>
-                  <QRCodeTitle><SiZenn /> Zenn</QRCodeTitle>
-                  <QRCodeDescription>技術記事やチュートリアルを公開</QRCodeDescription>
+                  <QRCodeTitle>
+                    <SiZenn /> Zenn
+                  </QRCodeTitle>
+                  <QRCodeDescription>
+                    技術記事やチュートリアルを公開
+                  </QRCodeDescription>
                 </QRCodeInfo>
               </QRCodeContainer>
             </QRCodeSection>
