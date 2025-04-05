@@ -1,35 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { lazy, Suspense } from 'react';
+import styled from 'styled-components';
+import GlobalStyle from './styles/GlobalStyle';
+import Layout from './layout/Layout';
+
+// コンポーネントの遅延読み込み
+const Hero = lazy(() => import('./components/Hero/Hero'));
+const Works = lazy(() => import('./components/Works/Works'));
+const About = lazy(() => import('./components/About/About'));
+const Contact = lazy(() => import('./components/Contact/Contact'));
+
+const LoadingFallback = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  font-size: 1.5rem;
+  
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    margin: 0 3px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+`;
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <GlobalStyle />
+      <Layout>
+        <Suspense fallback={
+          <LoadingFallback>
+            <div className="dot"></div>
+            <div className="dot"></div>
+            <div className="dot"></div>
+          </LoadingFallback>
+        }>
+          <Hero />
+          <Works />
+          <About />
+          <Contact />
+        </Suspense>
+      </Layout>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
