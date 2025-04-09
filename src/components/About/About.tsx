@@ -9,7 +9,7 @@ const AboutSection = styled.section`
   min-height: 100vh;
   padding: var(--section-padding);
   padding-left: calc(var(--header-width) + 60px);
-  background-color: var(--bg-color-light);
+  background-color: var(--bg-color);
 
   @media (max-width: 1279px) and (min-width: 768px) {
     padding-left: calc(var(--header-width-tablet) + 40px);
