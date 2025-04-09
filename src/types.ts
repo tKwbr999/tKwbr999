@@ -4,7 +4,7 @@ export type WorkItem = {
   description: string;
   role: string;
   publications?: string[];
-  imageUrl: string;
+  imageUrl?: string;
   link?: string;
 };
 

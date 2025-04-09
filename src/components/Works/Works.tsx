@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react';
-import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import styled from 'styled-components';
 import { worksData } from '../../data/worksData';
-import { FaArrowRight, FaExternalLinkAlt } from 'react-icons/fa';
 
 const WorksSection = styled.section`
   min-height: 100vh;
@@ -10,11 +10,11 @@ const WorksSection = styled.section`
   padding-left: calc(var(--header-width) + 60px);
   position: relative;
   background-color: var(--bg-color);
-  
+
   @media (max-width: 1279px) and (min-width: 768px) {
     padding-left: calc(var(--header-width-tablet) + 40px);
   }
-  
+
   @media (max-width: 767px) {
     padding-left: 20px;
     padding-top: 100px;
@@ -25,7 +25,7 @@ const SectionTitle = styled(motion.h2)`
   font-size: 2.5rem;
   margin-bottom: 60px;
   position: relative;
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -35,7 +35,7 @@ const SectionTitle = styled(motion.h2)`
     height: 3px;
     background-color: var(--accent-color);
   }
-  
+
   @media (max-width: 767px) {
     font-size: 2rem;
     margin-bottom: 40px;
@@ -46,7 +46,7 @@ const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 100px;
-  
+
   @media (max-width: 767px) {
     gap: 60px;
   }
@@ -54,38 +54,20 @@ const ProjectsContainer = styled.div`
 
 const ProjectItem = styled(motion.div)`
   position: relative;
-  
-  @media (min-width: 768px) {
-    display: flex;
-    align-items: center;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    min-height: 70vh;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="%23d42d83"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>') 16 16, auto;
-  }
-  
-  &::-webkit-scrollbar {
-    height: 5px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: var(--bg-color);
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: var(--accent-color);
-    border-radius: 10px;
-  }
+
+  /* 画像がない場合はflexレイアウトや横スクロールは不要 */
+  /* 必要に応じてスタイルを調整 */
+  min-height: auto; /* コンテンツの高さに合わせる */
 `;
 
 const ProjectInfo = styled.div`
-  flex: 0 0 40%;
-  min-width: 40%;
-  padding-right: 40px;
-  scroll-snap-align: start;
-  
+  /* 幅を100%に広げる */
+  width: 100%;
+  padding-right: 0; /* 右側のパディングを削除 */
+  /* scroll-snap-align: start; 横スクロールしないので不要 */
+
   @media (max-width: 767px) {
-    padding-right: 0;
+    /* 既に上で padding-right: 0; にしているので不要 */
   }
 `;
 
@@ -94,7 +76,7 @@ const ProjectTitle = styled.h3`
   margin-bottom: 20px;
   position: relative;
   display: inline-block;
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -107,11 +89,11 @@ const ProjectTitle = styled.h3`
     transform-origin: left;
     transition: transform 0.3s ease;
   }
-  
+
   &:hover:after {
     transform: scaleX(1);
   }
-  
+
   @media (max-width: 767px) {
     font-size: 1.5rem;
   }
@@ -124,7 +106,7 @@ const ProjectDescription = styled.p`
 
 const ProjectRole = styled.div`
   margin-bottom: 20px;
-  
+
   span {
     font-weight: 700;
   }
@@ -132,21 +114,21 @@ const ProjectRole = styled.div`
 
 const ProjectPublications = styled.div`
   margin-bottom: 20px;
-  
+
   span {
     font-weight: 700;
   }
-  
+
   ul {
     list-style: none;
     padding-left: 0;
   }
-  
+
   li {
     position: relative;
     padding-left: 20px;
     margin-bottom: 5px;
-    
+
     &:before {
       content: '';
       position: absolute;
@@ -165,15 +147,15 @@ const ProjectLink = styled.a`
   color: var(--accent-color);
   font-weight: 700;
   transition: all 0.3s ease;
-  
+
   svg {
     margin-left: 10px;
     transition: transform 0.3s ease;
   }
-  
+
   &:hover {
     opacity: 0.8;
-    
+
     svg {
       transform: translateX(5px);
     }
@@ -181,52 +163,39 @@ const ProjectLink = styled.a`
 `;
 
 const ProjectImage = styled.div`
-  flex: 0 0 70%;
-  min-width: 70%;
-  height: 60vh;
-  scroll-snap-align: start;
+  /* flexレイアウトではなくなったため、flex関連のプロパティは不要 */
+  /* min-width: 70%; */
+  height: 60vh; /* 高さは維持 */
+  /* scroll-snap-align: start; 横スクロールしないので不要 */
   position: relative;
   overflow: hidden;
-  
+  margin-top: 30px; /* 上の要素との間にマージンを追加 */
+
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
   }
-  
+
   &:hover img {
     transform: scale(1.05);
   }
-  
+
   @media (max-width: 767px) {
     height: 40vh;
-    margin-top: 20px;
+    /* margin-top は上で設定済み */
   }
 `;
 
-const ScrollInstruction = styled(motion.div)`
-  position: absolute;
-  bottom: 40px;
-  right: 60px;
-  display: flex;
-  align-items: center;
-  color: var(--text-color-muted);
-  
-  span {
-    margin-right: 10px;
-  }
-  
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
+/* ScrollInstruction は不要になったため削除 */
 
 const Works = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
-  const [showInstruction, setShowInstruction] = useState(true);
-  
+  /* ScrollInstruction を削除したので不要 */
+  // const [showInstruction, setShowInstruction] = useState(true);
+
   return (
     <WorksSection id="works" ref={ref}>
       <SectionTitle
@@ -236,7 +205,7 @@ const Works = () => {
       >
         WORKS
       </SectionTitle>
-      
+
       <ProjectsContainer>
         {worksData.map((project, index) => (
           <ProjectItem
@@ -244,7 +213,8 @@ const Works = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            onScroll={() => setShowInstruction(false)}
+            /* onScroll は不要になったため削除 */
+            // onScroll={() => setShowInstruction(false)}
           >
             <ProjectInfo>
               <ProjectTitle>
@@ -254,9 +224,10 @@ const Works = () => {
               </ProjectTitle>
               <ProjectDescription>{project.description}</ProjectDescription>
               <ProjectRole>
-                <span>担当: </span>{project.role}
+                <span>担当: </span>
+                {project.role}
               </ProjectRole>
-              
+
               {project.publications && project.publications.length > 0 && (
                 <ProjectPublications>
                   <span>掲載: </span>
@@ -267,28 +238,22 @@ const Works = () => {
                   </ul>
                 </ProjectPublications>
               )}
-              
+
               <ProjectLink href={project.link || '#'} target="_blank" rel="noopener noreferrer">
                 詳細を見る <FaExternalLinkAlt />
               </ProjectLink>
             </ProjectInfo>
-            
-            <ProjectImage>
-              <img src={project.imageUrl} alt={project.title} />
-            </ProjectImage>
+
+            {project.imageUrl && (
+              <ProjectImage>
+                <img src={project.imageUrl} alt={project.title} />
+              </ProjectImage>
+            )}
           </ProjectItem>
         ))}
       </ProjectsContainer>
-      
-      {showInstruction && (
-        <ScrollInstruction
-          animate={{ x: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-        >
-          <span>右へスクロール</span>
-          <FaArrowRight />
-        </ScrollInstruction>
-      )}
+
+      {/* ScrollInstruction は不要になったため削除 */}
     </WorksSection>
   );
 };
