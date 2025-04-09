@@ -1,9 +1,9 @@
-import { useRef } from "react";
-import styled from "styled-components";
-import { motion, useInView } from "framer-motion";
-import { profileInfo, newsItems } from "../../data/profileData";
-import { FaGithub } from "react-icons/fa";
-import { SiZenn, SiWantedly } from "react-icons/si";
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { FaGithub } from 'react-icons/fa';
+import { SiWantedly, SiZenn } from 'react-icons/si';
+import styled from 'styled-components';
+import { newsItems, profileInfo } from '../../data/profileData';
 
 const AboutSection = styled.section`
   min-height: 100vh;
@@ -27,7 +27,7 @@ const SectionTitle = styled(motion.h2)`
   position: relative;
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     bottom: -15px;
@@ -70,7 +70,7 @@ const SubsectionTitle = styled.h3`
   display: inline-block;
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     bottom: -8px;
@@ -105,7 +105,7 @@ const ExperienceList = styled.div`
   position: relative;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     left: 10px;
     top: 0;
@@ -125,7 +125,7 @@ const ExperienceItem = styled.div`
   }
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 10px;
@@ -234,6 +234,8 @@ const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
 
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <AboutSection id="about" ref={ref}>
       <SectionTitle
@@ -277,9 +279,7 @@ const About = () => {
                   <ExperienceCompany>{exp.company}</ExperienceCompany>
                   <ExperienceRole>{exp.role}</ExperienceRole>
                   <ExperiencePeriod>{exp.period}</ExperiencePeriod>
-                  <ExperienceDescription>
-                    {exp.description}
-                  </ExperienceDescription>
+                  <ExperienceDescription>{exp.description}</ExperienceDescription>
                 </ExperienceItem>
               ))}
             </ExperienceList>
@@ -315,9 +315,7 @@ const About = () => {
                 <NewsItem
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={
-                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                  }
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
                 >
                   <NewsDate>{news.date}</NewsDate>
@@ -336,38 +334,32 @@ const About = () => {
             <SubsectionTitle>SNS</SubsectionTitle>
             <QRCodeSection>
               <QRCodeContainer>
-                <QRCode src="/wantedly-qr.png" alt="Wantedlyプロフィール" />
+                <QRCode src={`${baseUrl}wantedly-qr.png`} alt="Wantedlyプロフィール" />
                 <QRCodeInfo>
                   <QRCodeTitle>
                     <SiWantedly /> Wantedly
                   </QRCodeTitle>
-                  <QRCodeDescription>
-                    職務経歴や実績の詳細はこちら
-                  </QRCodeDescription>
+                  <QRCodeDescription>職務経歴や実績の詳細はこちら</QRCodeDescription>
                 </QRCodeInfo>
               </QRCodeContainer>
 
               <QRCodeContainer>
-                <QRCode src="/x-qr.png" alt="X (Twitter)プロフィール" />
+                <QRCode src={`${baseUrl}x-qr.png`} alt="X (Twitter)プロフィール" />
                 <QRCodeInfo>
                   <QRCodeTitle>
                     <FaGithub /> X (Twitter)
                   </QRCodeTitle>
-                  <QRCodeDescription>
-                    最新の活動や業界情報を発信
-                  </QRCodeDescription>
+                  <QRCodeDescription>最新の活動や業界情報を発信</QRCodeDescription>
                 </QRCodeInfo>
               </QRCodeContainer>
 
               <QRCodeContainer>
-                <QRCode src="/zenn-qr.png" alt="Zenn技術ブログ" />
+                <QRCode src={`${baseUrl}zenn-qr.png`} alt="Zenn技術ブログ" />
                 <QRCodeInfo>
                   <QRCodeTitle>
                     <SiZenn /> Zenn
                   </QRCodeTitle>
-                  <QRCodeDescription>
-                    技術記事やチュートリアルを公開
-                  </QRCodeDescription>
+                  <QRCodeDescription>技術記事やチュートリアルを公開</QRCodeDescription>
                 </QRCodeInfo>
               </QRCodeContainer>
             </QRCodeSection>
