@@ -1,4 +1,4 @@
-import reactSWC from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ command }) => {
@@ -11,6 +11,17 @@ export default defineConfig(({ command }) => {
 
   return {
     base: base,
-    plugins: [reactSWC()],
+    plugins: [react()],
+    build: {
+      outDir: 'dist',
+      assetsDir: 'assets',
+      sourcemap: false,
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
+    },
   };
 });
