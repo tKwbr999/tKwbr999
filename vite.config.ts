@@ -6,7 +6,7 @@ export default defineConfig(({ command }) => {
   if (command === 'build') {
     // ビルド時のみ base を設定
     const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
-    base = isGithubActions ? '/tKwbr999.github.io/' : '/'; // リポジトリ名を修正
+    base = isGithubActions ? '/tKwbr999.github.io/' : '/';
   }
 
   return {
