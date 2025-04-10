@@ -2,12 +2,8 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ command }) => {
-  let base = '/'; // デフォルトは '/'
-  if (command === 'build') {
-    // ビルド時のみ base を設定
-    const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
-    base = isGithubActions ? '/tKwbr999.github.io/' : '/';
-  }
+  // ユーザーページ（username.github.io）の場合は常にルートパス'/'を使用
+  const base = '/';
 
   return {
     base: base,
